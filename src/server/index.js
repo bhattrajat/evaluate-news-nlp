@@ -29,10 +29,10 @@ app.get('/test', function (req, res) {
 
 app.post('/predict', async function (req, res) {
   console.log(req.body);
-  const text = req.body.text;
-  console.log(text);
+  const url = req.body.url;
+  console.log(url);
   try {
-    const resData = await fetch(`${BASE_URL}&txt=${text}`);
+    const resData = await fetch(`${BASE_URL}&url=${url}`);
     const data = await resData.json();
     console.log(data);
     res.status(200).json({
@@ -40,7 +40,7 @@ app.post('/predict', async function (req, res) {
       <ul>
         <li>Polarity: ${data.score_tag}</li>
         <li>Subjectivity: ${data.subjectivity}</li>
-        <li>Text: ${req.body.text}</li>
+        <li>Text: ${data.sentence_list[0].text}</li>
       </ul>`,
     });
   } catch (err) {

@@ -8,7 +8,7 @@ async function handleSubmit(event) {
   console.log('::: Form Submitted :::');
   try {
     const res = await fetch('http://localhost:8081/predict', {
-      body: JSON.stringify({ text: formText }),
+      body: JSON.stringify({ url: formText }),
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
